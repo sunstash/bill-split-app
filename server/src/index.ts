@@ -6,22 +6,23 @@ const app = express();
 const PORT = 5000;
 
 // Mock repository
-const sharedBills = new Map<string, {
-  totalAmount: number;
-  numberOfPeople: number;
-  amountPerPerson: number;
-}>();
+const sharedBills:any[] = [];
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+// Delay middleware to simulate network latency
+app.use((_, __, next) => {
+  setTimeout(next, 2000);
+});
 
 // Create a shared bill
 app.post('/api/bills/share', (req, res) => {
   const { totalAmount, numberOfPeople, amountPerPerson } = req.body;
   const shareId = uuidv4();
   
-  sharedBills.set(shareId, {
+  sharedBills.push({
+    shareId,
     totalAmount,
     numberOfPeople,
     amountPerPerson
@@ -33,10 +34,13 @@ app.post('/api/bills/share', (req, res) => {
 // Get a shared bill
 app.get('/api/bills/:shareId', (req, res) => {
   const { shareId } = req.params;
-  const bill = sharedBills.get(shareId);
   
-  if (!bill) {
-    return res.status(404).json({ error: 'Bill not found' });
+  let bill = null;
+  for (let i = 0; i < sharedBills.length; i++) {
+    if (sharedBills[i].shareId === shareId) {
+      bill = sharedBills[i];
+      break;
+    }
   }
   
   res.json(bill);

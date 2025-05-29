@@ -16,9 +16,7 @@
 **Context**: The application crashes when users input negative values or non-numeric characters. 
 
 **Acceptance Criteria**:
-- Add user-friendly error messages for invalid inputs
 - Prevent application crashes when invalid data is entered
-- Add unit tests for various invalid input scenarios
 - Ensure the UI provides clear feedback about invalid inputs
 
 ### 3. Implement Share Functionality Using Existing Backend

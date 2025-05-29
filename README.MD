@@ -1,4 +1,4 @@
-# Bill Splitting App
+# Bill Split App
 ![](sample.gif)
 
 ## Overview

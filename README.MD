@@ -1,4 +1,5 @@
 # Bill Splitting App
+![](sample.gif)
 
 ## Overview
 This is a full-stack application for splitting bills among groups of people. The application consists of a React frontend and a Node.js Express backend.
@@ -19,8 +20,8 @@ You will be given a React frontend app and Node.js Express backend app in a half
 ### Project Structure
 ```
 .
-├── frontend/          # React frontend application
-├── backend/           # Node.js Express backend application
+├── client/          # React frontend application
+├── server/           # Node.js Express backend application
 ├── setup.md          # Setup instructions
 └── tasks.md          # Task requirements and guidelines
 ```

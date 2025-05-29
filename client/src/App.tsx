@@ -52,32 +52,29 @@ function App() {
           Split Bill
         </button>
       </form>
+      <div className="result">
+        <h2>Amount per person:</h2>
+        <p className="amount">${amountPerPerson.toFixed(2)}</p>
+        <button
+          onClick={handleShare}
+          className="share-button"
+        >
+          Share Bill
+        </button>
+  
+          <div className="share-link">
+            <input
+              type="text"
+              value={"https://www.google.com"}
+              readOnly
+              className="share-input"
+            />
+            <button onClick={copyToClipboard} className="copy-button">
+              Copy
+            </button>
+          </div>
+      </div>
 
-      {amountPerPerson !== null && (
-        <div className="result">
-          <h2>Amount per person:</h2>
-          <p className="amount">${amountPerPerson.toFixed(2)}</p>
-          <button
-            onClick={handleShare}
-            className="share-button"
-          >
-            Share Bill
-          </button>
-
-    
-            <div className="share-link">
-              <input
-                type="text"
-                value={"https://www.google.com"}
-                readOnly
-                className="share-input"
-              />
-              <button onClick={copyToClipboard} className="copy-button">
-                Copy
-              </button>
-            </div>
-        </div>
-      )}
     </div>
   );
 }

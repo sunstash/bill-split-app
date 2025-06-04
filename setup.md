@@ -11,22 +11,13 @@ A modern web application for splitting bills among multiple people, built with R
 ## Getting Started
 
 1. Clone the repository
-2. Install dependencies:
-   ```bash
-   # Install frontend dependencies
-   cd client
-   npm install
-
-   # Install backend dependencies
-   cd ../server
-   npm install
-   ```
-3. Start the development servers:
-   ```bash
-   # Start backend server (from server directory)
-   npm run dev
-
-   # Start frontend server (from client directory)
-   npm run dev
-   ```
-4. You should be able to see the web app at http://localhost:5173/
+2. Running the server
+   1. `cd` into the `server` directory
+   2. Run `npm install` to install dependencies
+   3. Run `npm run dev` to run the server
+3. Open a separate terminal
+4. Running the client
+   1. `cd` into the `client` directory
+   2. Run `npm install` to install dependencies
+   3. Run `npm run dev` to run the client app
+   4. You should be able to see the client app at http://localhost:5173/

@@ -13,10 +13,10 @@
 
 ### 2. Handle Invalid Input Characters
 
-**Context**: The application crashes when users input negative values or non-numeric characters. 
+**Context**: The application shows NaN when users input negative values or non-numeric characters. 
 
 **Acceptance Criteria**:
-- Prevent application crashes when invalid data is entered
+- Prevent application from showing invalid value when invalid data is entered
 - Ensure the UI provides clear feedback about invalid inputs
 
 ### 3. Implement Share Functionality Using Existing Backend

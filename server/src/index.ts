@@ -6,7 +6,7 @@ const app = express();
 const PORT = 5000;
 
 // Mock repository
-const sharedBills:any[] = [];
+const sharedBills: any[] = [];
 
 // Middleware
 app.use(cors());
@@ -18,23 +18,42 @@ app.use((_, __, next) => {
 
 // Create a shared bill
 app.post('/api/bills/share', (req, res) => {
-  const { totalAmount, numberOfPeople, amountPerPerson } = req.body;
-  const shareId = uuidv4();
-  
-  sharedBills.push({
-    shareId,
-    totalAmount,
-    numberOfPeople,
-    amountPerPerson
-  });
+  try {
+    const { totalAmount, numberOfPeople, amountPerPerson } = req.body;
 
-  res.json({ shareId });
+    if (!totalAmount || !numberOfPeople || !amountPerPerson) {
+      return res.status(400).json({
+        message:
+          'totalAmount, numberOfPeople, amountPerPerson cannot be empty!',
+      });
+    }
+    const shareId = uuidv4();
+
+    sharedBills.push({
+      shareId,
+      totalAmount,
+      numberOfPeople,
+      amountPerPerson,
+    });
+
+    return res.status(200).json({ shareId });
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Caught error:', error.message);
+    } else {
+      console.error('Unknown error occurred:', error);
+    }
+
+    res.status(500).json({
+      message: 'Internal server error',
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+  }
 });
 
 // Get a shared bill
 app.get('/api/bills/:shareId', (req, res) => {
   const { shareId } = req.params;
-  
   let bill = null;
   for (let i = 0; i < sharedBills.length; i++) {
     if (sharedBills[i].shareId === shareId) {
@@ -42,10 +61,10 @@ app.get('/api/bills/:shareId', (req, res) => {
       break;
     }
   }
-  
+
   res.json(bill);
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-}); 
+  `Server running on port ${PORT}`;
+});

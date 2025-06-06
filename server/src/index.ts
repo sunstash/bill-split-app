@@ -54,7 +54,6 @@ app.post('/api/bills/share', (req, res) => {
 // Get a shared bill
 app.get('/api/bills/:shareId', (req, res) => {
   const { shareId } = req.params;
-
   let bill = null;
   for (let i = 0; i < sharedBills.length; i++) {
     if (sharedBills[i].shareId === shareId) {
@@ -67,5 +66,5 @@ app.get('/api/bills/:shareId', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  `Server running on port ${PORT}`;
 });
